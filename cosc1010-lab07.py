@@ -1,28 +1,68 @@
-# Your Name Here
+# Alex Rapp
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 10/29/24
+# Lab 07
+# Lab Section: 11
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# lecture slides, stack overflow for ideas.
+# lab TA's
 
 
-# Prompt the user for an upper bound 
+# Prompt the user for an upper bound
+var=0
+fac=1
 # Write a while loop that gives the factorial of that upper bound
+def factorial (var,fac=1):
+    if  var.isnumeric():
+        var=int(var)
+        if var>0:
+            while var>0:
+                fac=fac*var
+                var -= 1
+        elif var==0:
+            fac=1
+        return fac
+    else:
+        print(f'This is not an acceptable input')
+        fac = factorial(input('please enter a posititve whole number'))
+        return fac
+
+fac = factorial(input('what is the upper bound?'))
+
 # This will need to be a positive number
 # For this you will need to check to ensure that the user entered a number
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
 
-factorial = 1
 
-print(f"The result of the factorial based on the given bound is {factorial}")
+print(f"The result of the factorial based on the given bound is {fac}")
 
 print("*"*75)
-# Create a while loop that prompts a user for input of an integer values
+# Create a while loop that prompts a user for input of an integer values\
+var=0
+lists=[]
+variables=[]
+boo=True
+def ask ():
+    user = str(input('enter an integer'))
+    return user
+run = True
+while run:
+    user = ask()
+    if user.lower() != 'exit':
+        if user.lstrip('-').isdigit():  
+            variables.append(user)
+        else:
+            print('This is unacceptable')
+    else:
+        run = False
+
+for i in variables:
+    i = int(i)
+    var = var + i
+
+    
 # Sum all inputs. When the user enters 'exit' (regardless of casing) end the loop
 # Upon ending the loop print the sum
 # Your program should accept both positive and negative input
@@ -39,7 +79,7 @@ print("*"*75)
 
 num_sum = 0 
 
-print(f"Your final sum is {num_sum}")
+print(f"Your final sum is {var}")
 
 print("*"*75)
 # Now you will be creating a two operand calculator
@@ -58,5 +98,51 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
+var=0
+quest=0
+first=[]
 
-        
+second=[]
+
+ans=0
+operations=['+','-','/','*','%']
+def inp ():
+    return input('what is your question?')
+var = inp()
+while var.lower() != 'exit':
+    if '+' in var or '-' in var or '/' in var or '*' in var or '%' in var:
+        quest = var.lstrip('-')
+        for operand in operations:
+            if operand in quest:
+                var.strip(' ')
+                first , second = var.split(operand,1)
+                left = int(first)
+                right = int(second)
+                if operand == '+' :
+                    ans = left+right
+                    print(f'the answer is {ans}')
+                    var = inp()
+                elif operand == '-' :
+                    ans= left-right
+                    print(f'the answer is {ans}')
+                    var = inp()
+                elif operand =='/' :
+                    ans = left/right
+                    print(f'the answer is {ans}')
+                    var = inp()
+                elif operand == '*' :
+                    ans = left*right
+                    print(f'the answer is {ans}')
+                    var = inp()
+                elif operand == '%' :
+                    ans = left%right
+                    print(f'the answer is {ans}')
+                    var = inp()
+                else:
+                    continue
+    else:
+        print('this is not an acceptable input')
+        var = inp()
+
+    
+    
